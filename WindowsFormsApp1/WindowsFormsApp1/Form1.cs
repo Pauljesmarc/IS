@@ -27,6 +27,11 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            this.FormClosing += Form1_FormClosing;
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
@@ -50,6 +55,7 @@ namespace WindowsFormsApp1
                     processed.SetPixel(x,y,pixel);
                 }
             }
+          
             //pictureBox2.Image = processed;
             pictureBox2.Image = pictureBox1.Image;
         }
@@ -238,6 +244,10 @@ namespace WindowsFormsApp1
         private void greyScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timer1.Enabled = true;
+            timer2.Enabled = false;
+            timer3.Enabled = false;
+            timer4.Enabled = false;
+            timer5.Enabled = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -334,12 +344,16 @@ namespace WindowsFormsApp1
         private void openFileDialog2_FileOk(object sender, CancelEventArgs e)
         {
             imageB = new Bitmap(openFileDialog2.FileName);
-            pictureBox3.Image = imageB;
+            //pictureBox3.Image = imageB;
         }
 
         private void inversionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-           timer2.Enabled = true;
+            timer1.Enabled = false;
+            timer2.Enabled = true;
+            timer3.Enabled = false;
+            timer4.Enabled = false;
+            timer5.Enabled = false;
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -385,7 +399,11 @@ namespace WindowsFormsApp1
 
         private void contrastToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
+            timer2.Enabled = false;
             timer3.Enabled = true;
+            timer4.Enabled = false;
+            timer5.Enabled = false;
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -411,7 +429,11 @@ namespace WindowsFormsApp1
 
         private void sepiaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
+            timer2.Enabled = false;
+            timer3.Enabled = false;
             timer4.Enabled = true;
+            timer5.Enabled = false;
         }
 
         private void timer4_Tick(object sender, EventArgs e)
@@ -508,6 +530,15 @@ namespace WindowsFormsApp1
                 pictureBox2.Image = null;
             }
             
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cameraOffToolStripMenuItem_Click(this, EventArgs.Empty);
+            Video video = new Video();
+            video.Show();
+            this.Hide();    
             
         }
 
