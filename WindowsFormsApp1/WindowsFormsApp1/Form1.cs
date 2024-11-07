@@ -542,6 +542,78 @@ namespace WindowsFormsApp1
             
         }
 
+        private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp = loaded;
+            BitmapFilter.GaussianBlur(bmp, 4);
+            pictureBox2.Image=bmp;
+        }
+
+        private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp = loaded;
+            BitmapFilter.Sharpen(bmp, 11);
+            pictureBox2.Image = bmp;
+        }
+        private void meanRemovalToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Bitmap bmp = loaded;
+            BitmapFilter.MeanRemoval(bmp, 11);
+            pictureBox2.Image = bmp;
+        }
+
+        private void defaultToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp = loaded;
+            BitmapFilter.EmbossLaplacian(bmp);
+            pictureBox2.Image = bmp;
+        }
+
+        private void horizontalVerticalToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Bitmap bmp = loaded;
+            BitmapFilter.EmbossHorsVers(bmp);
+            pictureBox2.Image = bmp;
+        }
+
+        private void allDirectionToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Bitmap bmp = loaded;
+            BitmapFilter.EmbossAllDir(bmp);
+            pictureBox2.Image = bmp;
+        }
+
+        private void lossyToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Bitmap bmp = loaded;
+            BitmapFilter.EmbossLossy(bmp);
+            pictureBox2.Image = bmp;
+        }
+
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp = loaded;
+            BitmapFilter.EmbossHor(bmp);
+            pictureBox2.Image = bmp;
+        }
+
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp = loaded;
+            BitmapFilter.EmbossVert(bmp);
+            pictureBox2.Image = bmp;
+        }
+
+        private void smoothToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Bitmap bmp = loaded;
+            BitmapFilter.Smooth(bmp,1);
+            pictureBox2.Image = bmp;
+        }
+
+        
+
         private void label4_Click(object sender, EventArgs e)
         {
 

@@ -433,8 +433,59 @@ namespace ImageProcess2
 			m.Offset = 127;
 
 			return  BitmapFilter.Conv3x3(b, m);
-		}	
-		public static bool EdgeDetectQuick(Bitmap b)
+		}
+
+        public static bool EmbossHorsVers(Bitmap b)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(0);
+            m.TopMid = m.MidLeft = m.MidRight = m.BottomMid = -1;
+            m.Pixel = 4;
+            m.Offset = 127;
+
+            return BitmapFilter.Conv3x3(b, m);
+        }
+        public static bool EmbossAllDir(Bitmap b)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(-1);
+            m.Pixel = 8;
+            m.Offset = 127;
+
+            return BitmapFilter.Conv3x3(b, m);
+        }
+        public static bool EmbossLossy(Bitmap b)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.SetAll(-2);
+            m.TopLeft = m.TopRight = m.BottomMid = 1;
+            m.Pixel = 4;
+            m.Offset = 127;
+
+            return BitmapFilter.Conv3x3(b, m);
+        }
+
+        public static bool EmbossHor(Bitmap b)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.MidLeft = m.MidRight = -1;
+            m.Pixel = 2;
+            m.Offset = 127;
+
+            return BitmapFilter.Conv3x3(b, m);
+        }
+        public static bool EmbossVert(Bitmap b)
+        {
+            ConvMatrix m = new ConvMatrix();
+            m.TopMid = -1;
+            m.BottomMid = 1;
+            m.Pixel = 0;
+            m.Offset = 127;
+
+            return BitmapFilter.Conv3x3(b, m);
+        }
+
+        public static bool EdgeDetectQuick(Bitmap b)
 		{
 			ConvMatrix m = new ConvMatrix();
 			m.TopLeft = m.TopMid = m.TopRight = -1;
